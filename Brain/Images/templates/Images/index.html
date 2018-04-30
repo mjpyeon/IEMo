@@ -1,0 +1,14 @@
+{% extends 'Images/base.html' %}
+
+{% block content %}
+    <div class="post">
+        {% if latest_image_list %}
+            {% for i in latest_image_list %}
+                <p>{{ i.content }}</p>
+                <img src="{{ i.image.url }}" width="200px"/>
+            {% endfor %}    
+        {% else %}
+            <p>No images</p>
+        {% endif %}
+    </div>  
+{% endblock %}
