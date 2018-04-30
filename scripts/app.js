@@ -81,6 +81,14 @@ if (navigator.mediaDevices.getUserMedia) {
       var blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
       chunks = [];
       var audioURL = window.URL.createObjectURL(blob);
+      var oReq = new XMLHttpRequest();
+      url = "http://127.0.0.1:8000/Speeches/post/";
+      oReq.open("POST", url, true);
+      oReq.onload = function (oEvent) {
+        // Uploaded.
+        console.log("uploaded to server")
+      };
+      oReq.send(blob);
       audio.src = audioURL;
       console.log("recorder stopped");
 
